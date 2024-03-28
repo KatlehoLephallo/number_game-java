@@ -10,16 +10,6 @@ public class NumberGame {
         game.play();
     }
 
-    private int number = 2;
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
     Random random = new Random();
     private int randomNumber = generateRandomNumber();
     private int userGuess =0;
