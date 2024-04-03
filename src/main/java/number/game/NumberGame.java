@@ -7,12 +7,17 @@ public class NumberGame {
     public static void main(String[] args) {
         NumberGame game = new NumberGame();
         System.out.println("Welcome to Number Game");
-        game.play();
+        game.numberOfGuesses = game.askUser("How many chances to do wanna get to guess the number? (10 is the limit)", 11);
+        game.play(game.numberOfGuesses);
+        System.out.println("Game Over...");
     }
 
     Random random = new Random();
     private int randomNumber = generateRandomNumber();
     private int userGuess =0;
+    int numberOfGuesses;
+    int player;
+    int computer;
     Scanner scanner = new Scanner(System.in);
 
     // generate random number from 1 to 100
@@ -24,9 +29,9 @@ public class NumberGame {
         System.out.println("Do you wanna play again? (Y)Yes, (N)No");
         String decision = scanner.nextLine();
         if (decision.equalsIgnoreCase("y")){
-            play();
+            play(numberOfGuesses);
         }else
-            System.out.println("Thank you for playing...");
+            System.out.println("final score \n>>Computer: "+ computer+ "\n>>You: "+ player);
     }
 
     //ask user for input
@@ -64,9 +69,8 @@ public class NumberGame {
         }
     }
 
-    public void play(){
+    public void play(int guesses){
 
-        int guesses = askUser("How many chances to do wanna get? (10 is the limit)", 11);
 
         System.out.println("A number from 1-100 has be randomly generated. you have "+guesses+ " guesses");
         randomNumber = generateRandomNumber();
@@ -95,10 +99,14 @@ public class NumberGame {
     public void results(int userGuess, int randomNumber, int guesses){
         if (userGuess == randomNumber) {
             System.out.println();
+            player +=1;
             System.out.println("Correct Guess. Well done!");
+            System.out.println("Computer: "+ computer+ "\nYou: "+ player);
         } else if (guesses == 0) {
+            computer +=1;
+            System.out.println("Computer: "+ computer+ "\nYou: "+ player);
             System.out.println("|____________________|");
-            System.out.println("|You're out of guess.|\n"+"|The number is "+randomNumber +"    |\n|Game over           |");
+            System.out.println("|You're out of guess.|\n"+"|The number is "+randomNumber +"    |");
             System.out.println("|____________________|");
         }
     }
