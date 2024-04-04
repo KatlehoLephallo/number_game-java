@@ -18,20 +18,26 @@ public class NumberGame {
     int numberOfGuesses;
     int player;
     int computer;
-    Scanner scanner = new Scanner(System.in);
+    ScannerWrapper scanner = new ScannerWrapper();
+
+    public void setScanner( ScannerWrapper scanner){
+        this.scanner = scanner;
+    }
 
     // generate random number from 1 to 100
     public int generateRandomNumber(){
         randomNumber = random.nextInt(101);
         return randomNumber;
     }
-    public void anotherGame(){
+    public boolean anotherGame(){
         System.out.println("Do you wanna play again? (Y)Yes, (N)No");
         String decision = scanner.nextLine();
         if (decision.equalsIgnoreCase("y")){
             play(numberOfGuesses);
+            return true;
         }else
             System.out.println("final score \n>>Computer: "+ computer+ "\n>>You: "+ player);
+        return false;
     }
 
     //ask user for input
@@ -70,7 +76,8 @@ public class NumberGame {
     }
 
     public void play(int guesses){
-
+        String decision = null;
+        boolean playAgainflag;
 
         System.out.println("A number from 1-100 has be randomly generated. you have "+guesses+ " guesses");
         randomNumber = generateRandomNumber();
@@ -93,7 +100,7 @@ public class NumberGame {
         }
         results(userGuess,randomNumber,guesses);
         System.out.println();
-        anotherGame();
+        playAgainflag = anotherGame();
     }
 
     public void results(int userGuess, int randomNumber, int guesses){
