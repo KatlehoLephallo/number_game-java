@@ -75,9 +75,7 @@ public class NumberGame {
         }
     }
 
-    public void play(int guesses){
-        String decision = null;
-        boolean playAgainflag;
+    public boolean play(int guesses){
 
         System.out.println("A number from 1-100 has be randomly generated. you have "+guesses+ " guesses");
         randomNumber = generateRandomNumber();
@@ -100,15 +98,19 @@ public class NumberGame {
         }
         results(userGuess,randomNumber,guesses);
         System.out.println();
-        playAgainflag = anotherGame();
+        anotherGame();
+        return true;
     }
 
-    public void results(int userGuess, int randomNumber, int guesses){
+
+
+    public boolean results(int userGuess, int randomNumber, int guesses){
         if (userGuess == randomNumber) {
             System.out.println();
             player +=1;
             System.out.println("Correct Guess. Well done!");
             System.out.println("Computer: "+ computer+ "\nYou: "+ player);
+            return true;
         } else if (guesses == 0) {
             computer +=1;
             System.out.println("Computer: "+ computer+ "\nYou: "+ player);
@@ -116,6 +118,7 @@ public class NumberGame {
             System.out.println("|You're out of guess.|\n"+"|The number is "+randomNumber +"    |");
             System.out.println("|____________________|");
         }
+        return false;
     }
 
 }

@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class NumberGameTest {
-    Scanner scanner;
 
 
     @Test
@@ -38,6 +37,7 @@ public class NumberGameTest {
         assertFalse("We're not Playing another round", game.anotherGame());
     }
 
+
     @Test
     public void testAskUser(){
         NumberGame game = new NumberGame();
@@ -56,9 +56,10 @@ public class NumberGameTest {
     }
 
     @Test
-    public void testConvertToInt(){
+    public void testResults(){
         NumberGame game = new NumberGame();
-
+        assertTrue(game.results(7,7,2));
+        assertFalse(game.results(7,8,5));
     }
 
 }
