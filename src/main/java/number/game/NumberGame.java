@@ -6,19 +6,34 @@ import java.util.Scanner;
 public class NumberGame {
     public static void main(String[] args) {
         NumberGame game = new NumberGame();
+
         System.out.println("Welcome to Number Game");
         game.numberOfGuesses = game.askUser("How many chances to do wanna get to guess the number? (10 is the limit)", 11);
-        game.play(game.numberOfGuesses);
+        game.play(game.numberOfGuesses, game.generateRandomNumber());
         System.out.println("Game Over...");
     }
 
     Random random = new Random();
-    private int randomNumber = generateRandomNumber();
+    ScannerWrapper scanner = new ScannerWrapper();
+    private int randomNumber;
+    private boolean anotherGame;
     private int userGuess =0;
     int numberOfGuesses;
     int player;
+
     int computer;
-    ScannerWrapper scanner = new ScannerWrapper();
+
+    public boolean isAnotherGame() {
+        return anotherGame;
+    }
+    public int getPlayer() {
+        return player;
+    }
+
+    public int getComputer() {
+        return computer;
+    }
+
 
     public void setScanner( ScannerWrapper scanner){
         this.scanner = scanner;
@@ -33,7 +48,8 @@ public class NumberGame {
         System.out.println("Do you wanna play again? (Y)Yes, (N)No");
         String decision = scanner.nextLine();
         if (decision.equalsIgnoreCase("y")){
-            play(numberOfGuesses);
+            randomNumber = generateRandomNumber();
+            play(numberOfGuesses, randomNumber);
             return true;
         }else
             System.out.println("final score \n>>Computer: "+ computer+ "\n>>You: "+ player);
@@ -75,10 +91,10 @@ public class NumberGame {
         }
     }
 
-    public boolean play(int guesses){
+    public boolean play(int guesses, int randomNumber){
 
         System.out.println("A number from 1-100 has be randomly generated. you have "+guesses+ " guesses");
-        randomNumber = generateRandomNumber();
+
 
         while (guesses > 0){
 
@@ -98,7 +114,7 @@ public class NumberGame {
         }
         results(userGuess,randomNumber,guesses);
         System.out.println();
-        anotherGame();
+        anotherGame= anotherGame();
         return true;
     }
 

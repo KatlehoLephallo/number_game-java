@@ -1,6 +1,10 @@
+package TDD;
+
 import number.game.NumberGame;
 import number.game.ScannerWrapper;
 import org.junit.Test;
+import org.mockito.Mockito;
+
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -27,6 +31,7 @@ public class NumberGameTest {
 
         NumberGame game = new NumberGame();
         ScannerWrapper mockScanner = mock(ScannerWrapper.class);
+
         game.setScanner(mockScanner);
         String decisionYes = "y";
         String decisionNo = "n";
@@ -36,7 +41,6 @@ public class NumberGameTest {
         assertTrue("We are playing another round",game.anotherGame());
         assertFalse("We're not Playing another round", game.anotherGame());
     }
-
 
     @Test
     public void testAskUser(){
