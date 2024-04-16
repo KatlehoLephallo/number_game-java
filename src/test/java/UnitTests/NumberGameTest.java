@@ -1,12 +1,10 @@
-package TDD;
+package UnitTests;
 
 import number.game.NumberGame;
 import number.game.ScannerWrapper;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.HashSet;
-import java.util.Scanner;
 import java.util.Set;
 
 import static org.junit.Assert.*;
