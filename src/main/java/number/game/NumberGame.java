@@ -7,7 +7,7 @@ public class NumberGame {
     public static void main(String[] args) {
         NumberGame game = new NumberGame();
 
-        System.out.println("Welcome to Number Game");
+        System.out.println("Welcome to Number Game...");
         game.numberOfGuesses = game.askUser("How many chances to do wanna get to guess the number? (10 is the limit)", 11);
         game.play(game.numberOfGuesses, game.generateRandomNumber());
         System.out.println("Game Over...");

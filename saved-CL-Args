@@ -1,0 +1,8 @@
+- To run program on the CL:
+    java -cp target/number_game-java-1.0-SNAPSHOT.jar number.game.NumberGame
+
+- Short cut to run on CL with updated code:
+    mvn compile exec:java
+
+- To package and build a jar file with the dependencies
+    mvn package
